@@ -1,0 +1,64 @@
+----- INSIGHT TO BE CHECKED FOR----
+
+1. What is the count of each BMI category in the dataset?
+
+SELECT BMICATEGORY, COUNT(BMICATEGORY)
+FROM HEALTH 
+GROUP BY BMICATEGORY; 
+
+2. What is the average heart rate for each BMI category?
+
+SELECT BMICATEGORY, AVG(HEARTRATE) AS AVERAGE_HEARTRATE
+FROM HEALTH
+GROUP BY BMICATEGORY;
+
+3. What is the average number of daily steps for each BMI category?
+
+SELECT BMICATEGORY , ROUND(AVG(DAILYSTEPS)) AS AVERAGE_NUMBER_DAILY_STEPS 
+FROM HEALTH
+GROUP BY BMICATEGORY;
+
+4. How many cases are there for each type of sleep disorder?
+
+SELECT SLEEPDISORDER, COUNT(SLEEPDISORDER)
+FROM HEALTH
+GROUP BY SLEEPDISORDER;
+
+5. ___What is the average physical activity level for each type of sleep disorder?
+
+SELECT SLEEPDISORDER , ROUND(AVG(Physicalactivitylevel)+0.001) AS average_physical_activity_level 
+FROM health 
+GROUP BY SLEEPDISORDER;
+
+6. How many individuals have high stress levels (e.g., stress level > 7)?
+
+SELECT STRESSLEVEL, COUNT(PERSON_ID) AS NUMBER_OF_INDIVIDUAL_WITH_HIGH_STRESS_LEVEL
+FROM HEALTH 
+GROUP BY STRESSLEVEL
+HAVING STRESSLEVEL >7;
+
+7. How many individuals have a low physical activity level (e.g., physical activity level < 40)?
+
+SELECT gender , count(person_id)
+FROM health 
+where physicalactivitylevel < 40
+group by gender
+
+SELECT Physicalactivitylevel, COUNT(Physicalactivitylevel)
+FROM HEALTH 
+WHERE physicalactivitylevel < 40
+GROUP BY Physicalactivitylevel
+
+8. How many individuals have a heart rate above 80?
+
+SELECT heartrate, count(heartrate) AS count_of_individual_with_heart_rate_below_80  
+FROM health 
+where heartrate > 80
+Group by heartrate;
+
+9. What is the average stress level for individuals with a sleep disorder?
+
+select sleepdisorder, avg(stresslevel) as Average_stress_level 
+from Health
+Group by sleepdisorder 
+
